@@ -25,7 +25,7 @@ def establishCommandChannel():
     # Query command server's IP & port
     connectionAPI = 'https://api.mediatek.com/mcs/v2/devices/%(device_id)s/connections.csv'
     r = requests.get(connectionAPI % DEVICE_INFO,
-                 headers = {'deviceKey' : DEVICE_INFO['device_key'],
+                 headers = {'deviceKey' : DEVICE_INFO['device_key'],'Content-Type' : 'text/csv'})
     logging.info("Command Channel IP,port=" + r.text)
     (ip, port) = r.text.split(',')
 
